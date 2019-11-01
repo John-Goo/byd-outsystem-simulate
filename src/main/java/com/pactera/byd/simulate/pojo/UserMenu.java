@@ -1,8 +1,22 @@
 package com.pactera.byd.simulate.pojo;
 
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "userMenu")
+@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserMenu {
 
     // 员工号
+    @Id
     private String StaffCode;
 
     // 菜单编号或菜单ID
@@ -14,53 +28,11 @@ public class UserMenu {
     // 菜单名称
     private String MenuName;
 
-
-    public UserMenu() {
-
-    }
-
-    public UserMenu(String staffCode, String menuCode, String systemCode, String menuName) {
-        StaffCode = staffCode;
-        this.menuCode = menuCode;
-        this.systemCode = systemCode;
-        MenuName = menuName;
-    }
-
-    public UserMenu(String staffCode, String menuCode, String systemCode) {
-        StaffCode = staffCode;
-        this.menuCode = menuCode;
-        this.systemCode = systemCode;
-    }
-
-    public String getStaffCode() {
-        return StaffCode;
-    }
-
-    public void setStaffCode(String staffCode) {
-        StaffCode = staffCode;
-    }
-
-    public String getMenuCode() {
-        return menuCode;
-    }
-
-    public void setMenuCode(String menuCode) {
-        this.menuCode = menuCode;
-    }
-
-    public String getSystemCode() {
-        return systemCode;
-    }
-
-    public void setSystemCode(String systemCode) {
-        this.systemCode = systemCode;
-    }
-
-    public String getMenuName() {
-        return MenuName;
-    }
-
-    public void setMenuName(String menuName) {
-        MenuName = menuName;
+    public UserMenu(Object[] values) {
+        // 员工账号	菜单编号	系统编号	菜单名称
+        this.systemCode = values[1].toString();
+        this.menuCode = values[2].toString();
+        this.systemCode = values[3].toString();
+        this.MenuName = values[4].toString();
     }
 }
