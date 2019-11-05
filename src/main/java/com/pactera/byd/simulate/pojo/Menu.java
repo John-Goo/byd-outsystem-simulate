@@ -46,6 +46,4 @@ public class Menu {
         this.menuCode = values[8].toString();
         this.urlPath = values[9].toString();
     }
-
-
 }

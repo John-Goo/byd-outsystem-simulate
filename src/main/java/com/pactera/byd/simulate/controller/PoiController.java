@@ -20,17 +20,13 @@ public class PoiController {
     @Autowired
     private PoiService poiService;
 
-    /**
-     * 下载/导出Menu
-     */
+    // 下载/导出Menu
     @RequestMapping(value = "downLoadExcelFromMenu", method = RequestMethod.GET)
     public void downLoadExcelFromMenu(HttpServletResponse response) {
         poiService.downLoadExcelFromMenu(response);
     }
 
-    /**
-     * 下载/导出UserMenu
-     */
+    // 下载/导出UserMenu
     @RequestMapping(value = "downLoadExcelFromUserMenu", method = RequestMethod.GET)
     public void downLoadExcelFromUserMenu(HttpServletResponse response) {
         poiService.downLoadExcelFromUserMenu(response);

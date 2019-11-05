@@ -1,21 +1,16 @@
-logging:
-  config: classpath:logback.xml
-
-server:
-  port: 8080
-
-spring:
-  application:
-    name: byd-outsystem-simulate
-
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/poi
     username: root
     password: root
+  application:
+    name: byd-outsystem-simulate
   jpa:
+    database: mysql
     show-sql: true
     open-in-view: true
-    database: MySQL
-
+logging:
+  config: classpath:logback.xml
+server:
+  port: 8181
