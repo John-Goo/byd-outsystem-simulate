@@ -2,7 +2,6 @@ package com.pactera.byd.simulate.service;
 
 import com.pactera.byd.simulate.dao.ExcelDao;
 import com.pactera.byd.simulate.pojo.Menu;
-import com.pactera.byd.simulate.pojo.UserMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +12,10 @@ import java.util.List;
 public class ExcelService {
 
     @Autowired
-    private ExcelDao menuDao;
+    private ExcelDao excelDao;
 
     @Transactional
-    public void saveAllMenu(List<Menu> list, Menu menu) {
+    public void saveMenu(List<Menu> list, Menu menu) {
         for (Menu menu_1 : list) {
             // 系统编号
             menu_1.setSystemCode(menu.getSystemCode());
@@ -36,11 +35,11 @@ public class ExcelService {
             menu_1.setMenuCode(menu.getMenuCode());
             /// 菜单URL
             menu_1.setUrlPath(menu.getUrlPath());
-            menuDao.saveAllMenu(menu_1);
+            excelDao.save(menu_1);
         }
     }
 
-    @Transactional
+   /* @Transactional
     public void saveAllUserMenu(List<UserMenu> list, UserMenu userMenu) {
         for (UserMenu userMenu_1 : list) {
             // 员工账号
@@ -53,5 +52,5 @@ public class ExcelService {
             userMenu_1.setMenuName(userMenu.getMenuName());
             menuDao.saveAllUserMenu(userMenu_1);
         }
-    }
+    }*/
 }

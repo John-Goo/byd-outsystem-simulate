@@ -2,9 +2,7 @@ package com.pactera.byd.simulate.pojo;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "menu")
@@ -16,6 +14,7 @@ import javax.persistence.Table;
 public class Menu {
     // 系统编号
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private String systemCode;
     // 系统名称
     private String systemName;

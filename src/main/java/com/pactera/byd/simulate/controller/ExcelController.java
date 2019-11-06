@@ -3,7 +3,6 @@ package com.pactera.byd.simulate.controller;
 import com.pactera.byd.simulate.common.Result;
 import com.pactera.byd.simulate.common.ResultCode;
 import com.pactera.byd.simulate.pojo.Menu;
-import com.pactera.byd.simulate.pojo.UserMenu;
 import com.pactera.byd.simulate.service.ExcelService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -42,11 +41,11 @@ public class ExcelController {
             list.add(menu1);
         }
         // 保存
-        excelService.saveAllMenu(list, menu);
+        excelService.saveMenu(list, menu);
         return new Result(ResultCode.SUCCESS);
     }
 
-    @RequestMapping(value = "/userMenu/import", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/userMenu/import", method = RequestMethod.POST)
     public Result importExcelByUserMenu(@RequestParam("file") MultipartFile file, @RequestBody UserMenu userMenu) throws Exception {
         // 解析Excel
         // 根据Excel文件创建工作簿
@@ -70,7 +69,7 @@ public class ExcelController {
         // 保存
         excelService.saveAllUserMenu(list, userMenu);
         return new Result(ResultCode.SUCCESS);
-    }
+    }*/
 
     public static Object getCellValue(Cell cell) {
         //1.获取到单元格的属性类型
