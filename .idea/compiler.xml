@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="byd-outsystem-simulate" target="1.8" />
+      <module name="testexcel" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

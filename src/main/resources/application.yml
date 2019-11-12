@@ -12,5 +12,7 @@ spring:
     database: mysql
     show-sql: true
     open-in-view: true
+    hibernate:
+      ddl-auto: update
 logging:
   config: classpath:logback.xml

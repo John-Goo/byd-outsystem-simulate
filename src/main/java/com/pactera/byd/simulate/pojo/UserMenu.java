@@ -2,22 +2,19 @@ package com.pactera.byd.simulate.pojo;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "userMenu")
 @Data
-@Setter
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserMenu {
 
     // 员工号
     @Id
-    private String StaffCode;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer StaffCode;
 
     // 菜单编号或菜单ID
     private String menuCode;

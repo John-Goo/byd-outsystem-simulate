@@ -1,20 +1,21 @@
 package com.pactera.byd.simulate.pojo;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "menu")
-@Data
-@Setter
-@Getter
 @NoArgsConstructor
+@Data
 @AllArgsConstructor
 public class Menu {
     // 系统编号
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "system_code", unique = true, nullable = false)
     private String systemCode;
     // 系统名称
     private String systemName;
