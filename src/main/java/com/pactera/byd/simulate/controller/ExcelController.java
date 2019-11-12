@@ -45,6 +45,40 @@ public class ExcelController {
         return new Result(ResultCode.SUCCESS);
     }
 
+    /**
+     * 返回List集合
+     * @param file
+     * @param menu
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/import", method = RequestMethod.POST)
+    public List<Menu> importExcel(@RequestParam("file") MultipartFile file, Menu menu) throws Exception {
+        // 解析Excel
+        // 根据Excel文件创建工作簿
+        Workbook wb = new XSSFWorkbook(file.getInputStream());
+        // 获取Sheet
+        Sheet sheet = wb.getSheetAt(0);
+        // 获取Sheet中的每一行，和每一个单元格
+        List<Menu> list = new ArrayList<Menu>();
+        System.out.println(sheet.getLastRowNum());
+        for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+            Row row = sheet.getRow(rowNum);//根据索引获取每一个行
+            Object[] values = new Object[row.getLastCellNum()];
+            for (int cellNum = 1; cellNum < row.getLastCellNum(); cellNum++) {
+                Cell cell = row.getCell(cellNum);
+                Object value = getCellValue(cell);
+                values[cellNum] = value;
+            }
+            Menu menu1 = new Menu(values);
+            list.add(menu1);
+        }
+        // 保存
+        excelService.savemenu(list, menu);
+        return list;
+    }
+
+
     public static Object getCellValue(Cell cell) {
         //1.获取到单元格的属性类型
         CellType cellType = cell.getCellType();
